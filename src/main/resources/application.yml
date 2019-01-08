@@ -1,0 +1,28 @@
+spring: #spring boot整合rabbitmq基本配置
+  rabbitmq:
+    addresses: 192.168.3.33:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 15000
+    listener: #spring boot整合rabbitmq 消费端配置
+      simple:
+        concurrency: 5
+        max-concurrency: 10 # 最大并发数
+        acknowledge-mode: manual #签收模式，手工签收manual，自动签收AUTO
+        prefetch: 1 #做限流的       高峰期，海量数据，1设置代表每个线程一瞬间最多取1条数据
+        
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+
+server:
+  servlet:
+    context-path: /
+  port: 8002
+  
+  

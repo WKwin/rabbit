@@ -35,9 +35,12 @@ public class OrderReceiver {
 		Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
 		channel.basicAck(deliveryTag, false);
 	}*/
+	
+	
+	
 	/**
 	 * 
-	 * @param order
+	 * @param order 
 	 * @param headers 一条消息分为消息体和消息头
 	 * @param channel 我们设置了手工签收，手工签收 必须依赖于channel(消息通道)
 	 */
